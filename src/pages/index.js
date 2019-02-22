@@ -5,12 +5,13 @@ import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
 
-const IndexPage = () => (
+const IndexPage = (query) => (
   <Layout>
     <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
     <h1>Hi people</h1>
     <p>Welcome to your new Gatsby site.</p>
     <p>Now go build something great.</p>
+    {console.log(query.data.allProjectsJson.edges)}
     <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
       <Image />
     </div>
@@ -19,3 +20,18 @@ const IndexPage = () => (
 )
 
 export default IndexPage
+
+
+export const query = graphql`
+  query {
+    allProjectsJson {
+      edges {
+        node {
+          title
+          link
+          description
+        }
+      }
+    }
+  }
+`
