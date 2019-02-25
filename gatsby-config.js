@@ -36,6 +36,23 @@ module.exports = {
     },
     {
       resolve: `gatsby-plugin-sass`
+    },
+    {
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: [
+          {
+            family: `Poppins`,
+            subsets: [`latin`],
+            variants: [`400`]
+          },
+          {
+            family: `Playfair Display`,
+            variants: [`700`],
+            subsets: [`latin`],
+          },
+        ],
+      },
     }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.app/offline
