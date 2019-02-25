@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { TweenMax } from "gsap";
 import { animation } from "../utils/AnimationVariable";
 import Content from "./content.json";
-// import "../css/About.css";
 
 class About extends Component {
   constructor(props) {

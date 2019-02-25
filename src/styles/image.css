@@ -1,0 +1,51 @@
+.image {
+  position: relative;
+  height: 100vh;
+}
+
+.image:before {
+  position: absolute;
+  display: block;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #334455;
+  opacity: .6;
+  content: '';
+}
+
+@media screen and (min-width: 1025px) {
+  .image:before {
+    background-color: #fff;
+    content: none;
+  }
+}
+
+.image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  background-color: #fff;
+}
+
+.image-line {
+  width: 1px;
+  height: 100%;
+  right: 0;
+}
+
+.image-rect {
+  right: 1px;
+  width: 100%;
+}
+

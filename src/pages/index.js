@@ -5,6 +5,7 @@ import About from "../components/About";
 import LastProjects from "../components/LastProjects";
 import OrientationLock from "../components/OrientationLock";
 import SEO from "../components/seo"
+import "../styles/main.scss";
 
 const IndexPage = (query) => (
   <>
