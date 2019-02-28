@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { TweenMax } from "gsap";
 import { animation } from "../utils/AnimationVariable";
+import { connect } from 'react-redux';
 import Content from "./content.json";
 
 class About extends Component {
@@ -11,10 +12,16 @@ class About extends Component {
       scrollDownIsShowed: false
     };
 
-    window.addEventListener("animationImageComplete", () =>
+    // Gatsby SSR hack
+    if (typeof window !== `undefined`) {
+      window.addEventListener("scroll", () => this.hideScroll());
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if(this.props.imageAnimationCompleted !== prevProps.imageAnimationCompleted) {
       this.animationInit()
-    );
-    window.addEventListener("scroll", () => this.hideScroll());
+    }
   }
 
   componentDidMount() {
@@ -254,4 +261,6 @@ class About extends Component {
   }
 }
 
-export default About;
+const mapStateToProps = state => state.app
+
+export default connect(mapStateToProps)(About);
