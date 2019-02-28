@@ -1,6 +1,5 @@
 import React from "react";
 import Content from "./content.json";
-// import "../css/LastProjects.css";
 
 const LastProjects = () => {
   return (

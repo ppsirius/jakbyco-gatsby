@@ -3,7 +3,6 @@ import { TweenMax } from "gsap/TweenMax";
 import { animation } from "../utils/AnimationVariable";
 import { connect } from 'react-redux';
 import { imageAnimationCompleted as imageAnimationCompletedAction } from '../state/app';
-// import "../css/Image.css";
 
 class Image extends Component {
   animateOverlay = () => {

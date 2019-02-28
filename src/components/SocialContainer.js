@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { TweenMax } from "gsap/TweenMax";
 import { animation } from "../utils/AnimationVariable";
 import { connect } from 'react-redux';
-// import "../css/SocialContainer.css";
 
 class SocialContainer extends Component {
   constructor(props) {

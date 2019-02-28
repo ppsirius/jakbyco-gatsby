@@ -1,5 +1,4 @@
 import React from "react";
-// import "../css/OrientationLock.css";
 
 const OrientationLock = () => {
   return (
