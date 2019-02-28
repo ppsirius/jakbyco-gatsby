@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { TweenMax } from "gsap/TweenMax";
 import { animation } from "../utils/AnimationVariable";
+import { connect } from 'react-redux';
+import { imageAnimationCompleted as imageAnimationCompletedAction } from '../state/app';
 // import "../css/Image.css";
 
 class Image extends Component {
@@ -19,6 +21,7 @@ class Image extends Component {
           ease: animation.ease,
           onComplete: () => {
             // hack for IE
+            this.props.imageAnimationCompleted()
             if (typeof Event === "function") {
               window.dispatchEvent(new Event("animationImageComplete"));
             } else {
@@ -48,4 +51,14 @@ class Image extends Component {
   }
 }
 
-export default Image;
+
+const mapStateToProps = state => state;
+
+const mapDispatchToProps = dispatch => ({
+  imageAnimationCompleted: () => dispatch(imageAnimationCompletedAction())
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Image);
