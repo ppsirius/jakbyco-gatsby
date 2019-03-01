@@ -1,14 +1,8 @@
 [
   {
-    "text": "in Warsaw"
-  },
-  {
-    "text": "in Samsung R&D Poland"
-  },
-  {
-    "text": "at Akademia Gorilla"
-  },
-  {
-    "text": "https://web.facebook.com/GorilaAcademia/"
+    "live": "in Warsaw",
+    "work": "in Samsung R&D Poland",
+    "hobby": "at Akademia Gorilla",
+    "hobbyLink": "https://web.facebook.com/GorilaAcademia/"
   }
 ]

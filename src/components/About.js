@@ -1,8 +1,9 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
+import { StaticQuery, graphql } from "gatsby"
+import { connect } from 'react-redux';
 import { TweenMax } from "gsap";
 import { animation } from "../utils/AnimationVariable";
-import { connect } from 'react-redux';
-import Content from "./content.json";
 
 class About extends Component {
   constructor(props) {
@@ -16,6 +17,8 @@ class About extends Component {
     if (typeof window !== `undefined`) {
       window.addEventListener("scroll", () => this.hideScroll());
     }
+
+    console.log(this.props, ' constructor')
   }
 
   componentDidUpdate(prevProps) {
@@ -132,13 +135,13 @@ class About extends Component {
           <h1 className="headline about-header">
             <div className="hidden-text-container">
               <span className="hidden-text" ref="motto1">
-                {Content.about.motto1}
+                {this.props.motto.text1}
               </span>
               <br />
             </div>
             <div className="hidden-text-container">
               <span className="hidden-text" ref="motto2">
-                {Content.about.motto2}
+                {this.props.motto.text2}
               </span>
             </div>
           </h1>
@@ -146,24 +149,24 @@ class About extends Component {
           <div className="about-content">
             <div className="hidden-text-container">
               <span className="hidden-text" ref="text1">
-                {Content.about.text1}
+                {this.props.description.text1}
               </span>
               <br />
             </div>
             <div className="hidden-text-container">
               <span className="hidden-text" ref="text2">
-                {Content.about.text2}
+                {this.props.description.text2}
               </span>
               <br />
             </div>
             <div className="hidden-text-container">
               <span className="hidden-text" ref="text3">
-                {Content.about.text3}
+                {this.props.description.text3}
               </span>
             </div>
             <div className="hidden-text-container">
               <span className="hidden-text" ref="text4">
-                {Content.about.text4}
+                {this.props.description.text4}
               </span>
             </div>
           </div>
@@ -183,7 +186,7 @@ class About extends Component {
                       </g>
                     </svg>
                     <span className="about-info-place">
-                      {Content.about.place1}
+                      {this.props.places.live}
                     </span>
                   </div>
                 </div>
@@ -203,7 +206,7 @@ class About extends Component {
                       </g>
                     </svg>
                     <span className="about-info-place">
-                      {Content.about.place2}
+                      {this.props.places.work}
                     </span>
                   </div>
                 </div>
@@ -222,11 +225,11 @@ class About extends Component {
                     </svg>
                     <a
                       className="about-info-place"
-                      href={Content.about.place3link}
+                      href={this.props.places.hobbyLink}
                       rel="noopener noreferrer"
                       target="_blank"
                     >
-                      {Content.about.place3}
+                      {this.props.places.hobby}
                     </a>
                   </div>
                 </div>
@@ -261,6 +264,56 @@ class About extends Component {
   }
 }
 
+About.propTypes = {
+  description: PropTypes.object.isRequired,
+  motto: PropTypes.object.isRequired,
+  places: PropTypes.object.isRequired
+}
+
 const mapStateToProps = state => state.app
 
-export default connect(mapStateToProps)(About);
+const ConnectedAbout = connect(mapStateToProps)(About)
+
+export default () => (
+  <StaticQuery
+    query={graphql`
+      query {
+        allDescriptionJson {
+          edges {
+            node {
+              text1,
+              text2,
+              text3,
+              text4
+            }
+          }
+        }
+        allMottoJson {
+          edges {
+            node {
+              text1,
+              text2
+            }
+          }
+        }
+        allPlacesJson {
+          edges {
+            node {
+              live,
+              work,
+              hobby,
+              hobbyLink
+            }
+          }
+        }
+      }
+    `}
+    render={(data) => (
+      <ConnectedAbout
+        description={data.allDescriptionJson.edges[0].node}
+        motto={data.allMottoJson.edges[0].node}
+        places={data.allPlacesJson.edges[0].node}
+      />
+    )}
+  />
+)
