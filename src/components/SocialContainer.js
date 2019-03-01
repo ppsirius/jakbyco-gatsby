@@ -4,10 +4,6 @@ import { animation } from "../utils/AnimationVariable";
 import { connect } from 'react-redux';
 
 class SocialContainer extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidUpdate(prevProps) {
     if(this.props.imageAnimationCompleted !== prevProps.imageAnimationCompleted) {
       this.animationInit()
