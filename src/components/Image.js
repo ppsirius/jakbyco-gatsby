@@ -26,7 +26,6 @@ class Image extends Component {
   }
 
   animateOverlay = () => {
-    console.log('animate overlay')
     TweenMax.to(this.refs.imageLine, 1, {
       y: "100%",
       delay: 0.3,

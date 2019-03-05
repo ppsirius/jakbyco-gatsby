@@ -9,7 +9,7 @@ import "normalize.css/normalize.css";
 
 const IndexPage = (query) => (
   <>
-    <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+    <SEO title="Hi" keywords={[`portfolio`, `frontend`, `developer`, `react`, `gatsby`, `animation`]} />
     <div className="app">
       <ImageContainer />
       <About />
