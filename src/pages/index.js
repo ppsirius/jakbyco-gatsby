@@ -20,18 +20,3 @@ const IndexPage = (query) => (
 )
 
 export default IndexPage
-
-
-export const query = graphql`
-  query {
-    allProjectsJson {
-      edges {
-        node {
-          title
-          link
-          description
-        }
-      }
-    }
-  }
-`

@@ -18,7 +18,6 @@ class About extends Component {
       window.addEventListener("scroll", () => this.hideScroll());
     }
 
-    console.log(this.props, ' constructor')
   }
 
   componentDidUpdate(prevProps) {
