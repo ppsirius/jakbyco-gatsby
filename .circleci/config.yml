@@ -39,13 +39,13 @@ jobs:
           name: Deploy Over SSH
           command: |
             scp -r ~/public/ $SSH_USER@$SSH_HOST:$SSH_PORT$SSH_PATH
-  workflows:
-    version: 2§
-      jobs:
-        - build
-        - deploy:
-            requires:
-              - build
-            filters:
-              branches:
-                only: master
+workflows:
+  version: 2§
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
