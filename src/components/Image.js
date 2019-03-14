@@ -18,8 +18,8 @@ class Image extends Component {
   };
 
   componentDidMount() {
-  // SSR hack for onLoad
-  const img = this.image.current;
+    // SSR hack for onLoad
+    const img = this.image.current;
     if (img && img.complete) {
       this.imageLoaded();
     }
@@ -50,6 +50,7 @@ class Image extends Component {
           sizes="(min-width: 1025px) 50vw, 100vw"
           alt="Waterfall in Norway"
           ref={this.image}
+          onLoad={this.imageLoaded}
         />
         <div className="image-overlay image-line" ref="imageLine" />
         <div className="image-overlay image-rect" ref="imageRect" />
