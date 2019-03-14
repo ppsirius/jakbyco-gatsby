@@ -38,10 +38,9 @@ jobs:
       - run:
           name: Deploy Over SSH
           command: |
-            ssh $SSH_USER@$SSH_HOST "<remote deploy command>"
+            scp -r ~/public/ $SSH_USER@$SSH_HOST:$SSH_PORT$SSH_PATH
   workflows:
-    version: 2
-    build-and-deploy:
+    version: 2§
       jobs:
         - build
         - deploy:
