@@ -1,5 +1,20 @@
 [
   {
+    "title": "Google Maps Marker",
+    "link": "https://cranky-swanson-3753ae.netlify.com",
+    "description": "Maps with marker editor based on Vue, Vuex, Google Maps API and Snazzy Maps"
+  },
+  {
+    "title": "SVG animation with clip paths",
+    "link": "https://codepen.io/ppsirius/pen/PLmaZa",
+    "description": "Practice example with SVG possibilities"
+  },
+  {
+    "title": "Simple Gym Web App on mobile",
+    "link": "https://compassionate-dijkstra-7a87d4.netlify.com/",
+    "description": "Useful example about simple transitions animation in Vue"
+  },
+  {
     "title": "3D Game in A-Frame",
     "link": "https://quack-hunter.netlify.com/",
     "description": "First game in VR using awesome library A-Frame."
@@ -8,12 +23,6 @@
     "title": "Wave effect on Canvas",
     "link": "https://codepen.io/ppsirius/full/dZmxRE/",
     "description": "Effect example render on canvas using React with PIXI.js."
-  },
-  {
-    "title": "Stanley Black & Decker Landing Page",
-    "link": "http://wishyouwerehere.pl/",
-    "description":
-      "Due to recruitment & EB action, the landing page was dedicated to the potential candidates who are interested in working in the company. Using parallax and js validation form."
   },
   {
     "title": "Minimalistic Portfolio",
@@ -26,12 +35,6 @@
     "link": "https://github.com/ppsirius/tizen-boilerplate",
     "description":
       "Useful boilerplate for the fast creation and deploying App on Tizen TV Platform."
-  },
-  {
-    "title": "Hemp Company Landing Page & Shop",
-    "link": "http://goodfoods.pl/",
-    "description":
-      "Shop full of good stuff - products made from hemp and healthy food."
   },
   {
     "title": "SVG and CSS loader",
