@@ -47,9 +47,9 @@ jobs:
       - attach_workspace:
           at: public
       - run:
-          name: check files
+          name: check ssh files
           command: |
-            pwd && ls -al
+             ls -la ~/.ssh/ && cat ~/.ssh/config
 
       - run:
           name: Deploy Over SSH
