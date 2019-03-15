@@ -9,7 +9,7 @@ jobs:
       # documented at https://circleci.com/docs/2.0/circleci-images/
       - image: circleci/node:10.13
 
-    working_directory: ~/repo
+    working_directory: ~/jakbyco-gatsby
 
     steps:
       - checkout
@@ -46,9 +46,14 @@ jobs:
       - attach_workspace:
           at: public
       - run:
+          name: check files
+          command: |
+            pwd && ls -al &&
+
+      - run:
           name: Deploy Over SSH
           command: |
-            pwd && ls -al && scp -P $SSH_PORT -r ~/repo/public/ $SSH_USER@$SSH_HOST$SSH_PATH
+            scp -P $SSH_PORT -r ~/public/ $SSH_USER@$SSH_HOST$SSH_PATH
 workflows:
   version: 2
   build-and-deploy:
