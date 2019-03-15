@@ -43,6 +43,7 @@ jobs:
     machine:
       enabled: true
     steps:
+      - add_ssh_keys
       - attach_workspace:
           at: public
       - run:
