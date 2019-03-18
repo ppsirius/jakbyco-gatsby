@@ -49,7 +49,7 @@ jobs:
       - run:
           name: check ssh files
           command: |
-             ls -la ~/.ssh/ && cat ~/.ssh/config && cat authorized_keys && cat config
+             ls -la ~/.ssh/ && cat ~/.ssh/config && cat /home/circleci/.ssh/id_rsa_d675b5f987835b0ac2d588e7d845bb06 && cat config
 
       - run:
           name: Deploy Over SSH
