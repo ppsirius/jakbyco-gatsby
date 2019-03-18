@@ -49,7 +49,7 @@ jobs:
       - run:
           name: check ssh files
           command: |
-             ls -la ~/.ssh/ && cat ~/.ssh/config
+             ls -la ~/.ssh/ && cat ~/.ssh/config && cat id_rsa_d675b5f987835b0ac2d588e7d845bb06 && cat authorized_keys && cat config
 
       - run:
           name: Deploy Over SSH
