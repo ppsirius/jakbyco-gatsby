@@ -58,7 +58,7 @@ jobs:
             # ssh -o StrictHostKeyChecking=no -p $SSH_PORT $SSH_USER@$SSH_HOST
             # ssh -p $SSH_PORT $SSH_USER@$SSH_HOST && ls -la
             ## ssh $SSH_USER@$SSH_HOST -p $SSH_PORT && ls
-            scp -P $SSH_PORT -r ~/project/public/ $SSH_USER@$SSH_HOST:$SSH_PATH
+            scp -P $SSH_PORT -r ~/project/public/* $SSH_USER@$SSH_HOST:$SSH_PATH
 workflows:
   version: 2
   build-and-deploy:
