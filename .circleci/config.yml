@@ -32,11 +32,15 @@ jobs:
           name: Gatsby Build
           command: ./node_modules/.bin/gatsby build
 
-      - persist_to_workspace:
-          root: ./public
       - run:
           name: check paths
-          command: pwd && ls -al
+          command: pwd && ls -la
+
+      - persist_to_workspace:
+          root: /public/
+      - run:
+          name: check paths
+          command: pwd && ls -la
   deploy:
     machine:
       enabled: true
