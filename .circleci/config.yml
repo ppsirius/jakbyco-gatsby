@@ -35,7 +35,7 @@ jobs:
       - persist_to_workspace:
           root: .
           paths:
-            - public
+            - public/*
       - run:
           name: check paths
           command: pwd && ls -al
