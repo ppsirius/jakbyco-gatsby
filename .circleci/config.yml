@@ -33,9 +33,7 @@ jobs:
           command: ./node_modules/.bin/gatsby build
 
       - persist_to_workspace:
-          root: .
-          paths:
-            - public
+          root: ./public
       - run:
           name: check paths
           command: pwd && ls -al
@@ -50,7 +48,7 @@ jobs:
           name: check project files
           command: |
             #  ls -la ~/.ssh/ && cat ~/.ssh/config && cat /home/circleci/.ssh/id_rsa_d675b5f987835b0ac2d588e7d845bb06 && cat config
-            cd ~/project/public && ls -la
+            cd ~/project && ls -la
 
       - run:
           name: Deploy Over SSH
@@ -58,7 +56,7 @@ jobs:
             # ssh -o StrictHostKeyChecking=no -p $SSH_PORT $SSH_USER@$SSH_HOST
             # ssh -p $SSH_PORT $SSH_USER@$SSH_HOST && ls -la
             ## ssh $SSH_USER@$SSH_HOST -p $SSH_PORT && ls
-            scp -P $SSH_PORT -r ~/project/public/public/ $SSH_USER@$SSH_HOST:$SSH_PATH
+            scp -P $SSH_PORT -r ~/project/public/ $SSH_USER@$SSH_HOST:$SSH_PATH
 workflows:
   version: 2
   build-and-deploy:
