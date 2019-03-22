@@ -23,7 +23,7 @@ function SEO({ description, lang, meta, keywords, title }) {
               },
               {
                 property: `og:title`,
-                content: title,
+                content: data.site.siteMetadata.title,
               },
               {
                 property: `og:description`,
@@ -43,7 +43,7 @@ function SEO({ description, lang, meta, keywords, title }) {
               },
               {
                 name: `twitter:title`,
-                content: title,
+                content: data.site.siteMetadata.title,
               },
               {
                 name: `twitter:description`,
@@ -77,7 +77,6 @@ SEO.propTypes = {
   lang: PropTypes.string,
   meta: PropTypes.array,
   keywords: PropTypes.arrayOf(PropTypes.string),
-  title: PropTypes.string.isRequired,
 }
 
 export default SEO

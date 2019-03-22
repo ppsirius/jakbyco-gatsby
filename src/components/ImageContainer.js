@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Logo from "./Logo";
 import Image from "./Image";
 import SocialContainer from "./SocialContainer";
+import Raven from 'raven-js';
 
 class ImageContainer extends Component {
   constructor(props) {
@@ -9,9 +10,14 @@ class ImageContainer extends Component {
     this.state = { hasError: false };
   }
 
-  componentDidCatch(error, info) {
+  componentDidCatch(error, errorInfo) {
     this.setState({ hasError: true });
-    // logErrorToMyService(error, info);
+    Raven.configureScope((scope) => {
+      Object.keys(errorInfo).forEach(key => {
+        scope.setExtra(key, errorInfo[key]);
+      });
+    });
+    Raven.captureException(error);
   }
 
   render() {

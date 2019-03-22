@@ -8,21 +8,16 @@ import "../styles/main.scss";
 import "normalize.css/normalize.css";
 import useBuildTime from "../utils/buildTime"
 
-const IndexPage = (query) => {
-  const time = useBuildTime()
-
-  return (
+const IndexPage = () => (
     <>
       <SEO keywords={[`portfolio`, `frontend`, `developer`, `react`, `gatsby`, `animation`]} />
-      <div className="app" aria-date={time}>
+      <div className="app" data-date={useBuildTime()}>
         <ImageContainer />
         <About />
         <LastProjects />
         <OrientationLock />
       </div>
     </>
-  )
-}
-
+)
 
 export default IndexPage
