@@ -6,17 +6,23 @@ import OrientationLock from "../components/OrientationLock";
 import SEO from "../components/seo"
 import "../styles/main.scss";
 import "normalize.css/normalize.css";
+import useBuildTime from "../utils/buildTime"
 
-const IndexPage = (query) => (
-  <>
-    <SEO keywords={[`portfolio`, `frontend`, `developer`, `react`, `gatsby`, `animation`]} />
-    <div className="app">
-      <ImageContainer />
-      <About />
-      <LastProjects />
-      <OrientationLock />
-    </div>
-  </>
-)
+const IndexPage = (query) => {
+  const time = useBuildTime()
+
+  return (
+    <>
+      <SEO keywords={[`portfolio`, `frontend`, `developer`, `react`, `gatsby`, `animation`]} />
+      <div className="app" aria-date={time}>
+        <ImageContainer />
+        <About />
+        <LastProjects />
+        <OrientationLock />
+      </div>
+    </>
+  )
+}
+
 
 export default IndexPage

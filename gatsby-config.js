@@ -69,6 +69,9 @@ module.exports = {
         environment: process.env.NODE_ENV,
         enabled: (() => ["production"].indexOf(process.env.NODE_ENV) !== -1)()
       }
+    },
+    {
+      resolve: "gatsby-buildtime-timezone",
     }
   ],
 }
