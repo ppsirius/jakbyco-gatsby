@@ -1,5 +1,10 @@
 [
   {
+    "title": "Inveo",
+    "link": "https://relaxed-nightingale-97ea55.netlify.com/",
+    "description": "Website for Cosmetics Brand. Used Gatsby and Rebass, focusing on RWD and page load time. Page under construction."
+  },
+  {
     "title": "Google Maps Marker",
     "link": "https://cranky-swanson-3753ae.netlify.com",
     "description": "Maps with marker editor based on Vue, Vuex, Google Maps API and Snazzy Maps"
