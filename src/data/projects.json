@@ -1,7 +1,7 @@
 [
   {
     "title": "Inveo",
-    "link": "https://relaxed-nightingale-97ea55.netlify.com/",
+    "link": "https://github.com/ppsirius/inveo",
     "description": "Website for Cosmetics Brand. Used Gatsby and Rebass, focusing on RWD and page load time. Page under construction."
   },
   {
@@ -32,14 +32,12 @@
   {
     "title": "Minimalistic Portfolio",
     "link": "http://pariaszewski.com/",
-    "description":
-      "Portfolio website for my good friend who is a big fan of minimalism. Key features of the site are motion lite and fast loading time."
+    "description": "Portfolio website for my good friend who is a big fan of minimalism. Key features of the site are motion lite and fast loading time."
   },
   {
     "title": "Boilerplate for Tizen TV App",
     "link": "https://github.com/ppsirius/tizen-boilerplate",
-    "description":
-      "Useful boilerplate for the fast creation and deploying App on Tizen TV Platform."
+    "description": "Useful boilerplate for the fast creation and deploying App on Tizen TV Platform."
   },
   {
     "title": "SVG and CSS loader",
