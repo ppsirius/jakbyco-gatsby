@@ -6,6 +6,7 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-preload-fonts`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -36,25 +37,25 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-sass`
+      resolve: `gatsby-plugin-sass`,
     },
-    {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
-      options: {
-        fonts: [
-          {
-            family: `Poppins`,
-            subsets: [`latin`],
-            variants: [`400`]
-          },
-          {
-            family: `Playfair Display`,
-            variants: [`700`],
-            subsets: [`latin`],
-          },
-        ],
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-prefetch-google-fonts`,
+    //   options: {
+    //     fonts: [
+    //       {
+    //         family: `Poppins`,
+    //         subsets: [`latin`],
+    //         variants: [`400`],
+    //       },
+    //       {
+    //         family: `Playfair Display`,
+    //         variants: [`700`],
+    //         subsets: [`latin`],
+    //       },
+    //     ],
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
@@ -67,11 +68,11 @@ module.exports = {
         dsn: "https://c09837bfcb6a42728aa8b81f84f9b2c8@sentry.io/1421652",
         // Optional settings, see https://docs.sentry.io/clients/node/config/#optional-settings
         environment: process.env.NODE_ENV,
-        enabled: (() => ["production"].indexOf(process.env.NODE_ENV) !== -1)()
-      }
+        enabled: (() => ["production"].indexOf(process.env.NODE_ENV) !== -1)(),
+      },
     },
     {
       resolve: "gatsby-buildtime-timezone",
-    }
+    },
   ],
-}
+};
