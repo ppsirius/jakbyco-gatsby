@@ -39,23 +39,6 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sass`,
     },
-    // {
-    //   resolve: `gatsby-plugin-prefetch-google-fonts`,
-    //   options: {
-    //     fonts: [
-    //       {
-    //         family: `Poppins`,
-    //         subsets: [`latin`],
-    //         variants: [`400`],
-    //       },
-    //       {
-    //         family: `Playfair Display`,
-    //         variants: [`700`],
-    //         subsets: [`latin`],
-    //       },
-    //     ],
-    //   },
-    // },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
