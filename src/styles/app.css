@@ -32,7 +32,9 @@ html {
     color: #334455;
     font-size: 16px;
   }
-
 }
 
-
+::selection {
+  background: #334455;
+  color: #fff;
+}
