@@ -1,28 +1,29 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { StaticQuery, graphql } from "gatsby"
+import { StaticQuery, graphql } from 'gatsby';
 import { connect } from 'react-redux';
-import { TweenMax } from "gsap";
-import { animation } from "../utils/AnimationVariable";
+import { TweenMax } from 'gsap';
+import { animation } from '../utils/AnimationVariable';
 
 class About extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      scrollDownIsShowed: false
+      scrollDownIsShowed: false,
     };
 
     // Gatsby SSR hack
     if (typeof window !== `undefined`) {
-      window.addEventListener("scroll", () => this.hideScroll());
+      window.addEventListener('scroll', () => this.hideScroll());
     }
-
   }
 
   componentDidUpdate(prevProps) {
-    if(this.props.imageAnimationCompleted !== prevProps.imageAnimationCompleted) {
-      this.animationInit()
+    if (
+      this.props.imageAnimationCompleted !== prevProps.imageAnimationCompleted
+    ) {
+      this.animationInit();
     }
   }
 
@@ -40,7 +41,12 @@ class About extends Component {
 
     // Text
     this.textHeight = this.refs.text1.getBoundingClientRect().height;
-    this.textElements = [this.refs.text1, this.refs.text2, this.refs.text3, this.refs.text4];
+    this.textElements = [
+      this.refs.text1,
+      this.refs.text2,
+      this.refs.text3,
+      this.refs.text4,
+    ];
 
     // Places
     this.placeHeight = this.refs.place1.getBoundingClientRect().height;
@@ -50,6 +56,7 @@ class About extends Component {
     this.scrollDownHeight = this.refs.scrollDown.getBoundingClientRect().height;
 
     // Setup hide elements
+    TweenMax.set(this.refs.about, { opacity: 1 });
     TweenMax.set(this.mottoElements, { y: this.mottoHeight });
     TweenMax.set(this.refs.aboutSeparator, { width: 0 });
     TweenMax.set(this.textElements, { y: this.textHeight });
@@ -69,7 +76,7 @@ class About extends Component {
         ease: animation.ease,
         onComplete: () => {
           TweenMax.to(this.refs.aboutSeparator, animation.duration, {
-            width: "100%",
+            width: '100%',
             ease: animation.ease,
             onComplete: () => {
               TweenMax.staggerTo(
@@ -84,17 +91,17 @@ class About extends Component {
                       animation.duration,
                       {
                         y: animation.valueY,
-                        ease: animation.ease
+                        ease: animation.ease,
                       },
                       animation.staggerTime
                     );
-                  }
+                  },
                 },
                 animation.staggerTime
               );
-            }
+            },
           });
-        }
+        },
       },
       animation.staggerTime
     );
@@ -106,9 +113,9 @@ class About extends Component {
           y: animation.valueY,
           onComplete: () => {
             setTimeout(() => {
-              this.refs.scrollDown.classList.add("animate");
+              this.refs.scrollDown.classList.add('animate');
             }, 300);
-          }
+          },
         });
       }, 3000);
     }
@@ -122,14 +129,14 @@ class About extends Component {
         y: this.scrollDownHeight + 10,
         onComplete: () => {
           this.setState({ scrollDownIsShowed: false });
-        }
+        },
       });
     }
   };
 
   render() {
     return (
-      <div className="about">
+      <div className="about" style={{ opacity: 0 }} ref="about">
         <div className="about-container">
           <h1 className="headline about-header">
             <div className="hidden-text-container">
@@ -266,12 +273,12 @@ class About extends Component {
 About.propTypes = {
   description: PropTypes.object.isRequired,
   motto: PropTypes.object.isRequired,
-  places: PropTypes.object.isRequired
-}
+  places: PropTypes.object.isRequired,
+};
 
-const mapStateToProps = state => state.app
+const mapStateToProps = (state) => state.app;
 
-const ConnectedAbout = connect(mapStateToProps)(About)
+const ConnectedAbout = connect(mapStateToProps)(About);
 
 export default () => (
   <StaticQuery
@@ -280,9 +287,9 @@ export default () => (
         allDescriptionJson {
           edges {
             node {
-              text1,
-              text2,
-              text3,
+              text1
+              text2
+              text3
               text4
             }
           }
@@ -290,7 +297,7 @@ export default () => (
         allMottoJson {
           edges {
             node {
-              text1,
+              text1
               text2
             }
           }
@@ -298,9 +305,9 @@ export default () => (
         allPlacesJson {
           edges {
             node {
-              live,
-              work,
-              hobby,
+              live
+              work
+              hobby
               hobbyLink
             }
           }
@@ -315,4 +322,4 @@ export default () => (
       />
     )}
   />
-)
+);
