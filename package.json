@@ -7,6 +7,9 @@
     "build": "astro build",
     "preview": "astro preview"
   },
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "dependencies": {
     "@astrojs/mdx": "^5.0.3",
     "@astrojs/tailwind": "^6.0.2",
