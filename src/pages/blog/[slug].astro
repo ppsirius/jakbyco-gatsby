@@ -1,0 +1,66 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+}
+---
+
+<Layout title={`${post.data.title} — Piotr Pupczyk`} description={post.data.description}>
+  <Nav />
+  <main class="min-h-screen pt-24 pb-20 px-6 max-w-3xl mx-auto">
+    <article class="mt-8">
+      <header class="mb-12">
+        <a href="/blog" class="text-white/40 hover:text-white/70 transition-colors text-sm mb-6 inline-block">
+          ← Back to blog
+        </a>
+        <div class="flex flex-wrap gap-2 mb-4">
+          {post.data.tags.map((tag: string) => (
+            <span class="text-xs text-white/40 bg-white/5 px-2 py-0.5 rounded">#{tag}</span>
+          ))}
+        </div>
+        <h1 class="text-3xl md:text-4xl font-bold text-white leading-tight mb-4">
+          {post.data.title}
+        </h1>
+        <p class="text-white/60 text-lg mb-4">{post.data.description}</p>
+        <time
+          datetime={post.data.pubDate.toISOString()}
+          class="text-white/40 text-sm"
+        >
+          {formatDate(post.data.pubDate)}
+        </time>
+        <div class="w-full h-px bg-white/10 mt-8"></div>
+      </header>
+
+      <div class="prose prose-invert prose-lg max-w-none
+        prose-headings:text-white
+        prose-p:text-white/80
+        prose-a:text-white prose-a:underline prose-a:underline-offset-2 hover:prose-a:text-white/70
+        prose-code:text-white/90 prose-code:bg-white/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
+        prose-pre:bg-white/5 prose-pre:border prose-pre:border-white/10
+        prose-strong:text-white
+        prose-li:text-white/80
+        prose-hr:border-white/10
+      ">
+        <Content />
+      </div>
+    </article>
+  </main>
+</Layout>

@@ -1,0 +1,36 @@
+---
+import SocialLinks from './SocialLinks.astro';
+---
+
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+  <!-- Background image -->
+  <div class="absolute inset-0 z-0">
+    <img
+      src="/images/image-large.jpg"
+      alt="Waterfall in Norway"
+      class="w-full h-full object-cover"
+    />
+    <div class="absolute inset-0 bg-[#334455]/60"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-10 text-center px-6">
+    <p class="text-white/70 text-sm uppercase tracking-widest mb-4 font-medium">
+      jakbyco.com
+    </p>
+    <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">
+      Coding nice things<br />makes me happy.
+    </h1>
+    <p class="text-white/80 text-lg md:text-xl mb-10">
+      Piotr Pupczyk — Frontend Developer
+    </p>
+    <SocialLinks />
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+      <path d="M12 5v14M5 12l7 7 7-7" />
+    </svg>
+  </div>
+</section>

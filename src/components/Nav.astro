@@ -1,0 +1,26 @@
+---
+const links = [
+  { label: 'About', href: '/#about' },
+  { label: 'Projects', href: '/#projects' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Contact', href: '/#contact' },
+];
+---
+
+<nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 bg-[#334455]/80 backdrop-blur-sm">
+  <a href="/" class="text-white font-bold text-xl tracking-tight hover:opacity-80 transition-opacity">
+    jakbyco.com
+  </a>
+  <ul class="flex gap-6">
+    {links.map((link) => (
+      <li>
+        <a
+          href={link.href}
+          class="text-white/80 hover:text-white transition-colors text-sm font-medium tracking-wide uppercase"
+        >
+          {link.label}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>

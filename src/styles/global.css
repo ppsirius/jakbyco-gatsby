@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@theme {
+  --color-slate-primary: #334455;
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+}

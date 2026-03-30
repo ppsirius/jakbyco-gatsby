@@ -1,0 +1,92 @@
+---
+const projects = [
+  {
+    title: 'Nowbruk',
+    href: 'https://nowbruk-git-master-jakbyco.vercel.app/',
+    description: 'Website for paving services. Used Gatsby and Prismic.io for content management.',
+    tags: ['Gatsby', 'Prismic.io'],
+  },
+  {
+    title: 'Inveo',
+    href: 'https://github.com/ppsirius/inveo',
+    description: 'Website for Cosmetics Brand. Used Gatsby and Rebass, focusing on RWD and page load time.',
+    tags: ['Gatsby', 'Rebass', 'RWD'],
+  },
+  {
+    title: 'Google Maps Marker',
+    href: 'https://cranky-swanson-3753ae.netlify.com',
+    description: 'Maps with marker editor based on Vue, Vuex, Google Maps API and Snazzy Maps.',
+    tags: ['Vue', 'Vuex', 'Google Maps API'],
+  },
+  {
+    title: 'SVG animation with clip paths',
+    href: 'https://codepen.io/ppsirius/pen/PLmaZa',
+    description: 'Practice example with SVG possibilities.',
+    tags: ['SVG', 'CSS', 'Animation'],
+  },
+  {
+    title: 'Simple Gym Web App on mobile',
+    href: 'https://compassionate-dijkstra-7a87d4.netlify.com/',
+    description: 'Useful example about simple transitions animation in Vue.',
+    tags: ['Vue', 'Animation'],
+  },
+  {
+    title: '3D Game in A-Frame',
+    href: 'https://quack-hunter.netlify.com/',
+    description: 'First game in VR using awesome library A-Frame.',
+    tags: ['A-Frame', 'VR', 'WebXR'],
+  },
+  {
+    title: 'Wave effect on Canvas',
+    href: 'https://codepen.io/ppsirius/full/dZmxRE/',
+    description: 'Effect example rendered on canvas using React with PIXI.js.',
+    tags: ['React', 'PIXI.js', 'Canvas'],
+  },
+  {
+    title: 'Minimalistic Portfolio',
+    href: 'http://pariaszewski.com/',
+    description: 'Portfolio website for a good friend who is a big fan of minimalism. Key features: motion-lite and fast loading time.',
+    tags: ['Portfolio', 'Performance'],
+  },
+  {
+    title: 'Boilerplate for Tizen TV App',
+    href: 'https://github.com/ppsirius/tizen-boilerplate',
+    description: 'Useful boilerplate for the fast creation and deploying App on Tizen TV Platform.',
+    tags: ['Tizen', 'TV App'],
+  },
+  {
+    title: 'SVG and CSS loader',
+    href: 'https://codepen.io/ppsirius/pen/vKEeeq',
+    description: 'The SVG loader with smooth CSS animation.',
+    tags: ['SVG', 'CSS', 'Animation'],
+  },
+];
+---
+
+<section id="projects" class="py-24 px-6 max-w-5xl mx-auto">
+  <h2 class="text-2xl md:text-3xl font-bold text-white/60 uppercase tracking-widest mb-12">
+    Last projects:
+  </h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    {projects.map((project) => (
+      <a
+        href={project.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group block p-6 border border-white/10 rounded-lg hover:border-white/30 hover:bg-white/5 transition-all duration-300"
+      >
+        <h3 class="text-white font-semibold text-lg mb-2 group-hover:text-white transition-colors">
+          {project.title}
+          <span class="inline-block ml-2 opacity-0 group-hover:opacity-100 transition-opacity translate-x-0 group-hover:translate-x-1 duration-200">→</span>
+        </h3>
+        <p class="text-white/60 text-sm leading-relaxed mb-4">{project.description}</p>
+        <div class="flex flex-wrap gap-2">
+          {project.tags.map((tag) => (
+            <span class="text-xs text-white/40 bg-white/5 px-2 py-0.5 rounded">{tag}</span>
+          ))}
+        </div>
+      </a>
+    ))}
+  </div>
+</section>
