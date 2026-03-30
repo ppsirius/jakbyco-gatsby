@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Projects from '../components/Projects.astro';
+import SocialLinks from '../components/SocialLinks.astro';
+---
+
+<Layout
+  title="Piotr Pupczyk — Frontend Developer | Portfolio"
+  description="Coding nice things makes me happy."
+>
+  <Nav />
+  <main>
+    <Hero />
+    <About />
+    <Projects />
+
+    <!-- Contact / Footer -->
+    <footer id="contact" class="border-t border-white/10 py-16 px-6 text-center">
+      <p class="text-white/60 text-sm mb-6 uppercase tracking-widest">Get in touch</p>
+      <a
+        href="mailto:piotrek@jakbyco.com"
+        class="text-white text-2xl font-medium hover:text-white/70 transition-colors"
+      >
+        piotrek@jakbyco.com
+      </a>
+      <div class="mt-10">
+        <SocialLinks />
+      </div>
+      <p class="text-white/30 text-xs mt-10">
+        &copy; {new Date().getFullYear()} Piotr Pupczyk
+      </p>
+    </footer>
+  </main>
+</Layout>

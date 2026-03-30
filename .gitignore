@@ -55,9 +55,9 @@ typings/
 # dotenv environment variables file
 .env
 
-# gatsby files
-.cache/
-public
+# astro
+dist/
+.astro/
 
 # astro
 dist/
