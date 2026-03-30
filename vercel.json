@@ -1,4 +1,5 @@
 {
+  "outputDirectory": "dist",
   "build": {
     "env": {
       "NODE_VERSION": "24"
