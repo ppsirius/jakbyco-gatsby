@@ -9,12 +9,14 @@ import SocialLinks from './SocialLinks.astro';
       src="/images/image-large.jpg"
       alt="Background"
       class="w-full h-full object-cover"
-      style="filter: brightness(0.25) contrast(1.1);"
+      style="filter: brightness(0.35) contrast(1.05) saturate(0.6);"
     />
-    <!-- Gradient overlay -->
+    <!-- Uniform dark layer — prevents image lines bleeding through text -->
+    <div class="absolute inset-0" style="background: rgba(0,0,0,0.72);"></div>
+    <!-- Bottom gradient — merges image into page bg -->
     <div
       class="absolute inset-0"
-      style="background: linear-gradient(to bottom, transparent 30%, var(--bg) 100%);"
+      style="background: linear-gradient(to bottom, transparent 45%, var(--bg) 90%);"
     ></div>
   </div>
 

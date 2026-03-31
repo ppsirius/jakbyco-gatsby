@@ -8,25 +8,25 @@
 :root {
   --bg: #000000;
   --fg: #ffffff;
-  --fg-muted: rgba(255, 255, 255, 0.5);
-  --fg-subtle: rgba(255, 255, 255, 0.25);
-  --fg-faint: rgba(255, 255, 255, 0.1);
-  --border: rgba(255, 255, 255, 0.12);
-  --border-hover: rgba(255, 255, 255, 0.35);
-  --surface: rgba(255, 255, 255, 0.04);
-  --surface-hover: rgba(255, 255, 255, 0.07);
+  --fg-muted: rgba(255, 255, 255, 0.72);   /* ~6.7:1 contrast on black ✓ */
+  --fg-subtle: rgba(255, 255, 255, 0.45);  /* ~3.8:1 — used only for large/decorative */
+  --fg-faint: rgba(255, 255, 255, 0.12);
+  --border: rgba(255, 255, 255, 0.14);
+  --border-hover: rgba(255, 255, 255, 0.4);
+  --surface: rgba(255, 255, 255, 0.05);
+  --surface-hover: rgba(255, 255, 255, 0.09);
 }
 
 [data-theme="light"] {
   --bg: #ffffff;
   --fg: #000000;
-  --fg-muted: rgba(0, 0, 0, 0.5);
-  --fg-subtle: rgba(0, 0, 0, 0.25);
-  --fg-faint: rgba(0, 0, 0, 0.08);
-  --border: rgba(0, 0, 0, 0.12);
-  --border-hover: rgba(0, 0, 0, 0.35);
-  --surface: rgba(0, 0, 0, 0.03);
-  --surface-hover: rgba(0, 0, 0, 0.06);
+  --fg-muted: rgba(0, 0, 0, 0.65);        /* ~6:1 contrast on white ✓ */
+  --fg-subtle: rgba(0, 0, 0, 0.42);       /* ~3.5:1 — decorative/large only */
+  --fg-faint: rgba(0, 0, 0, 0.1);
+  --border: rgba(0, 0, 0, 0.14);
+  --border-hover: rgba(0, 0, 0, 0.4);
+  --surface: rgba(0, 0, 0, 0.04);
+  --surface-hover: rgba(0, 0, 0, 0.08);
 }
 
 /* ─── Base ─── */

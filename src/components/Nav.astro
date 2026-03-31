@@ -123,6 +123,7 @@ const links = [
   </div>
 </nav>
 
+<!-- Theme toggle: is:inline so it runs synchronously (no flash) -->
 <script is:inline>
   (function () {
     function applyTheme(theme) {
@@ -182,4 +183,47 @@ const links = [
       }
     });
   })();
+</script>
+
+<!-- GSAP smooth-scroll for anchor nav links (bundled by Astro/Vite) -->
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+
+  gsap.registerPlugin(ScrollToPlugin);
+
+  const NAV_HEIGHT = 56; // px — matches h-14
+
+  function scrollToAnchor(hash: string) {
+    const target = document.querySelector(hash);
+    if (!target) return;
+    gsap.to(window, {
+      scrollTo: { y: target, offsetY: NAV_HEIGHT },
+      duration: 1.1,
+      ease: 'power3.inOut',
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Intercept all anchor links that point to /#section
+    document.querySelectorAll<HTMLAnchorElement>('a[href^="/#"]').forEach((link) => {
+      link.addEventListener('click', (e) => {
+        // Only apply on home page (one-page layout)
+        if (window.location.pathname !== '/') return;
+
+        e.preventDefault();
+        const hash = link.getAttribute('href')!.slice(1); // "/#about" → "#about"
+        scrollToAnchor(hash);
+
+        // Close mobile menu if open
+        document.getElementById('mobile-menu')?.classList.add('hidden');
+      });
+    });
+
+    // If page loads with a hash (e.g. direct link to /#projects), animate to it
+    if (window.location.hash && window.location.pathname === '/') {
+      // Small delay so the page has rendered
+      setTimeout(() => scrollToAnchor(window.location.hash), 100);
+    }
+  });
 </script>
