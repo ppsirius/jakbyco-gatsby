@@ -1,14 +1,160 @@
 @import "tailwindcss";
 
 @theme {
-  --color-slate-primary: #334455;
-  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-sans: 'Space Grotesk', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
+/* ─── Theme Variables ─── */
+:root {
+  --bg: #000000;
+  --fg: #ffffff;
+  --fg-muted: rgba(255, 255, 255, 0.5);
+  --fg-subtle: rgba(255, 255, 255, 0.25);
+  --fg-faint: rgba(255, 255, 255, 0.1);
+  --border: rgba(255, 255, 255, 0.12);
+  --border-hover: rgba(255, 255, 255, 0.35);
+  --surface: rgba(255, 255, 255, 0.04);
+  --surface-hover: rgba(255, 255, 255, 0.07);
+}
+
+[data-theme="light"] {
+  --bg: #ffffff;
+  --fg: #000000;
+  --fg-muted: rgba(0, 0, 0, 0.5);
+  --fg-subtle: rgba(0, 0, 0, 0.25);
+  --fg-faint: rgba(0, 0, 0, 0.08);
+  --border: rgba(0, 0, 0, 0.12);
+  --border-hover: rgba(0, 0, 0, 0.35);
+  --surface: rgba(0, 0, 0, 0.03);
+  --surface-hover: rgba(0, 0, 0, 0.06);
+}
+
+/* ─── Base ─── */
 html {
   scroll-behavior: smooth;
 }
 
 body {
+  background-color: var(--bg);
+  color: var(--fg);
   font-family: var(--font-sans);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Grain overlay ─── */
+.grain-layer {
+  position: fixed;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  animation: grain-shift 8s steps(10) infinite;
+}
+
+@keyframes grain-shift {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-4%, -7%); }
+  20% { transform: translate(-9%, 4%); }
+  30% { transform: translate(5%, -12%); }
+  40% { transform: translate(-3%, 15%); }
+  50% { transform: translate(-11%, 6%); }
+  60% { transform: translate(8%, -3%); }
+  70% { transform: translate(2%, 11%); }
+  80% { transform: translate(6%, 18%); }
+  90% { transform: translate(-7%, 7%); }
+}
+
+/* ─── Scroll reveal animations ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ─── Typography utilities ─── */
+.label-text {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+
+.section-title {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+/* ─── Custom scrollbar ─── */
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-hover);
+}
+
+/* ─── Selection ─── */
+::selection {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+/* ─── Border utility ─── */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ─── Cursor line effect ─── */
+.cursor-line {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 100vh;
+  background: linear-gradient(to bottom, transparent, var(--fg-faint), transparent);
+  pointer-events: none;
+  z-index: 9998;
+  transition: transform 0.1s linear;
+}
+
+/* ─── Theme transition ─── */
+* {
+  transition-property: background-color, border-color, color;
+  transition-duration: 0.25s;
+  transition-timing-function: ease;
+}
+
+/* ─── Prose overrides for blog ─── */
+.prose-theme {
+  --tw-prose-body: var(--fg-muted);
+  --tw-prose-headings: var(--fg);
+  --tw-prose-links: var(--fg);
+  --tw-prose-code: var(--fg);
+  --tw-prose-pre-bg: var(--surface);
+  --tw-prose-hr: var(--border);
 }

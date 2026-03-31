@@ -17,21 +17,97 @@ import SocialLinks from '../components/SocialLinks.astro';
     <About />
     <Projects />
 
-    <!-- Contact / Footer -->
-    <footer id="contact" class="border-t border-white/10 py-16 px-6 text-center">
-      <p class="text-white/60 text-sm mb-6 uppercase tracking-widest">Get in touch</p>
-      <a
-        href="mailto:piotrek@jakbyco.com"
-        class="text-white text-2xl font-medium hover:text-white/70 transition-colors"
+    <!-- Footer / Contact -->
+    <footer
+      id="contact"
+      style="border-top: 1px solid var(--border);"
+    >
+
+      <!-- Big logo text -->
+      <div
+        class="px-6 md:px-10 py-16 md:py-20"
+        style="border-bottom: 1px solid var(--border);"
       >
-        piotrek@jakbyco.com
-      </a>
-      <div class="mt-10">
+        <h2
+          class="font-bold leading-none uppercase tracking-tight reveal"
+          style="font-size: clamp(4rem, 14vw, 12rem); color: var(--fg); letter-spacing: -0.03em;"
+        >
+          jakbyco
+        </h2>
+      </div>
+
+      <!-- Social icons row -->
+      <div
+        class="px-6 md:px-10 py-5 flex items-center"
+        style="border-bottom: 1px solid var(--border);"
+      >
         <SocialLinks />
       </div>
-      <p class="text-white/30 text-xs mt-10">
-        &copy; {new Date().getFullYear()} Piotr Pupczyk
-      </p>
+
+      <!-- Contact + info grid -->
+      <div
+        class="grid grid-cols-1 md:grid-cols-2"
+        style="border-bottom: 1px solid var(--border);"
+      >
+        <!-- Left: Contact info -->
+        <div
+          class="px-6 md:px-10 py-10"
+          style="border-bottom: 1px solid var(--border); border-right: 0 solid var(--border);"
+        >
+          <p class="label-text mb-4" style="color: var(--fg-muted);">Contact Us.</p>
+          <p class="text-sm mb-8" style="color: var(--fg-subtle);">
+            If you have any further questions or inquiries
+          </p>
+          <div class="space-y-1">
+            <p class="label-text" style="color: var(--fg-subtle);">General</p>
+            <a
+              href="mailto:piotrek@jakbyco.com"
+              class="text-base font-medium hover:opacity-60 transition-opacity block"
+              style="color: var(--fg);"
+            >
+              piotrek@jakbyco.com
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Newsletter / tagline -->
+        <div class="px-6 md:px-10 py-10 md:border-l" style="border-color: var(--border);">
+          <p class="label-text mb-4" style="color: var(--fg-muted);">Based in Warsaw.</p>
+          <p class="text-sm mb-8" style="color: var(--fg-subtle);">
+            Frontend Developer. Passionate about good design and motion.
+          </p>
+          <a
+            href="https://github.com/ppsirius"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-3 group"
+          >
+            <span
+              class="label-text group-hover:opacity-60 transition-opacity"
+              style="color: var(--fg);"
+            >
+              View GitHub Profile
+            </span>
+            <span
+              class="transition-transform duration-200 group-hover:translate-x-1"
+              style="color: var(--fg-muted);"
+            >→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Copyright bar -->
+      <div
+        class="px-6 md:px-10 py-5 flex items-center justify-between"
+      >
+        <p class="label-text" style="color: var(--fg-subtle);">
+          &copy; {new Date().getFullYear()} Piotr Pupczyk
+        </p>
+        <p class="label-text" style="color: var(--fg-subtle);">
+          jakbyco.com
+        </p>
+      </div>
+
     </footer>
   </main>
 </Layout>

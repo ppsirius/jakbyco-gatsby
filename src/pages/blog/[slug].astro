@@ -25,42 +25,91 @@ function formatDate(date: Date) {
 
 <Layout title={`${post.data.title} — Piotr Pupczyk`} description={post.data.description}>
   <Nav />
-  <main class="min-h-screen pt-24 pb-20 px-6 max-w-3xl mx-auto">
-    <article class="mt-8">
-      <header class="mb-12">
-        <a href="/blog" class="text-white/40 hover:text-white/70 transition-colors text-sm mb-6 inline-block">
-          ← Back to blog
-        </a>
-        <div class="flex flex-wrap gap-2 mb-4">
+  <main class="min-h-screen pt-14">
+
+    <!-- Article header -->
+    <header
+      class="px-6 md:px-10 py-16 md:py-24 max-w-4xl"
+      style="border-bottom: 1px solid var(--border);"
+    >
+      <a
+        href="/blog"
+        class="label-text inline-flex items-center gap-2 mb-10 hover:opacity-60 transition-opacity"
+        style="color: var(--fg-muted);"
+      >
+        <span>←</span>
+        <span>Back to blog</span>
+      </a>
+
+      <div class="reveal">
+        <div class="flex flex-wrap gap-2 mb-6">
           {post.data.tags.map((tag: string) => (
-            <span class="text-xs text-white/40 bg-white/5 px-2 py-0.5 rounded">#{tag}</span>
+            <span
+              class="label-text px-2 py-1"
+              style="color: var(--fg-subtle); border: 1px solid var(--border);"
+            >
+              #{tag}
+            </span>
           ))}
         </div>
-        <h1 class="text-3xl md:text-4xl font-bold text-white leading-tight mb-4">
+
+        <h1
+          class="font-bold leading-tight mb-6"
+          style="font-size: clamp(2rem, 5vw, 4rem); letter-spacing: -0.03em; color: var(--fg);"
+        >
           {post.data.title}
         </h1>
-        <p class="text-white/60 text-lg mb-4">{post.data.description}</p>
+
+        <p class="text-lg leading-relaxed mb-6" style="color: var(--fg-muted);">
+          {post.data.description}
+        </p>
+
         <time
           datetime={post.data.pubDate.toISOString()}
-          class="text-white/40 text-sm"
+          class="label-text"
+          style="color: var(--fg-subtle);"
         >
           {formatDate(post.data.pubDate)}
         </time>
-        <div class="w-full h-px bg-white/10 mt-8"></div>
-      </header>
+      </div>
+    </header>
 
-      <div class="prose prose-invert prose-lg max-w-none
-        prose-headings:text-white
-        prose-p:text-white/80
-        prose-a:text-white prose-a:underline prose-a:underline-offset-2 hover:prose-a:text-white/70
-        prose-code:text-white/90 prose-code:bg-white/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
-        prose-pre:bg-white/5 prose-pre:border prose-pre:border-white/10
-        prose-strong:text-white
-        prose-li:text-white/80
-        prose-hr:border-white/10
-      ">
+    <!-- Article content -->
+    <article class="px-6 md:px-10 py-16 max-w-3xl">
+      <div
+        class="prose prose-lg max-w-none"
+        style="
+          --tw-prose-body: var(--fg-muted);
+          --tw-prose-headings: var(--fg);
+          --tw-prose-links: var(--fg);
+          --tw-prose-bold: var(--fg);
+          --tw-prose-code: var(--fg);
+          --tw-prose-pre-bg: var(--surface);
+          --tw-prose-hr: var(--border);
+          --tw-prose-bullets: var(--fg-subtle);
+          --tw-prose-counters: var(--fg-subtle);
+          color: var(--fg-muted);
+        "
+      >
         <Content />
       </div>
     </article>
+
+    <!-- Footer bar -->
+    <div
+      class="px-6 md:px-10 py-6 flex items-center justify-between"
+      style="border-top: 1px solid var(--border);"
+    >
+      <a
+        href="/blog"
+        class="label-text inline-flex items-center gap-2 hover:opacity-60 transition-opacity"
+        style="color: var(--fg-muted);"
+      >
+        <span>←</span>
+        <span>All posts</span>
+      </a>
+      <p class="label-text" style="color: var(--fg-subtle);">&copy; {new Date().getFullYear()} Piotr Pupczyk</p>
+    </div>
+
   </main>
 </Layout>
