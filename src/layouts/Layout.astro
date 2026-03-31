@@ -58,15 +58,11 @@ const {
     <!-- Grain overlay -->
     <div class="grain-layer" aria-hidden="true"></div>
 
-    <!-- Cursor line effect -->
-    <div class="cursor-line" id="cursor-line" aria-hidden="true"></div>
-
     <slot />
 
     <!-- Scroll reveal observer -->
     <script is:inline>
       document.addEventListener('DOMContentLoaded', function () {
-        // Scroll reveal
         const observer = new IntersectionObserver(
           function (entries) {
             entries.forEach(function (entry) {
@@ -80,14 +76,6 @@ const {
         document.querySelectorAll('.reveal').forEach(function (el) {
           observer.observe(el);
         });
-
-        // Cursor line
-        const cursorLine = document.getElementById('cursor-line');
-        if (cursorLine) {
-          document.addEventListener('mousemove', function (e) {
-            cursorLine.style.transform = 'translateX(' + e.clientX + 'px)';
-          });
-        }
       });
     </script>
   </body>

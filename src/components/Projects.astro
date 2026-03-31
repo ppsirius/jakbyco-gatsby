@@ -65,96 +65,84 @@ const projects = [
 
 <section
   id="projects"
-  class="py-24 md:py-32"
   style="border-top: 1px solid var(--border);"
 >
-  <div class="max-w-7xl mx-auto px-6 md:px-10">
-
-    <!-- Header row -->
-    <div
-      class="flex items-end justify-between mb-0 pb-6 reveal"
-      style="border-bottom: 1px solid var(--border);"
-    >
-      <div>
-        <p class="label-text mb-2" style="color: var(--fg-muted);">Selected Work</p>
-        <h2
-          class="font-bold leading-none"
-          style="font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -0.02em; color: var(--fg);"
-        >
-          Projects
-        </h2>
-      </div>
+  <!-- Section header — padded -->
+  <div class="px-6 md:px-10 pt-16 md:pt-20 pb-8 reveal">
+    <p class="label-text mb-2" style="color: var(--fg-muted);">Selected Work</p>
+    <div class="flex items-end justify-between">
+      <h2
+        class="font-bold leading-none"
+        style="font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -0.02em; color: var(--fg);"
+      >
+        Projects
+      </h2>
       <p class="label-text hidden md:block" style="color: var(--fg-subtle);">
         {projects.length} Projects
       </p>
     </div>
-
-    <!-- Project rows (UNITED24 style) -->
-    <div>
-      {projects.map((project, index) => (
-        <a
-          href={project.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          class={`group flex items-center justify-between py-5 md:py-6 reveal reveal-delay-${Math.min(index % 4 + 1, 4)}`}
-          style="border-bottom: 1px solid var(--border);"
-        >
-          <!-- Left: index + title + tags -->
-          <div class="flex items-center gap-4 md:gap-8 flex-1 min-w-0">
-            <!-- Index number -->
-            <span
-              class="label-text flex-shrink-0 w-6 text-right"
-              style="color: var(--fg-subtle);"
-            >
-              {String(index + 1).padStart(2, '0')}
-            </span>
-
-            <!-- Title -->
-            <div class="flex-1 min-w-0">
-              <h3
-                class="font-semibold truncate transition-colors duration-200"
-                style="font-size: clamp(0.95rem, 2vw, 1.15rem); color: var(--fg); letter-spacing: -0.01em;"
-              >
-                {project.title}
-              </h3>
-              <p
-                class="text-sm mt-0.5 truncate hidden md:block"
-                style="color: var(--fg-subtle);"
-              >
-                {project.description}
-              </p>
-            </div>
-          </div>
-
-          <!-- Right: tags + arrow -->
-          <div class="flex items-center gap-4 md:gap-8 flex-shrink-0 ml-4">
-            <!-- Tags (hidden on small screens) -->
-            <div class="hidden lg:flex gap-2">
-              {project.tags.slice(0, 2).map((tag) => (
-                <span
-                  class="label-text px-2 py-1"
-                  style="color: var(--fg-subtle); border: 1px solid var(--border);"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-
-            <!-- View project label + arrow -->
-            <div
-              class="flex items-center gap-2 label-text"
-              style="color: var(--fg-subtle);"
-            >
-              <span class="hidden md:inline">View</span>
-              <span
-                class="transition-transform duration-200 group-hover:translate-x-1 inline-block text-base"
-                style="color: var(--fg);"
-              >→</span>
-            </div>
-          </div>
-        </a>
-      ))}
-    </div>
-
   </div>
+
+  <!-- Rows — full-width, borders touch screen edges -->
+  <div style="border-top: 1px solid var(--border);">
+    {projects.map((project, index) => (
+      <a
+        href={project.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        class={`group flex items-center justify-between px-6 md:px-10 py-5 md:py-6 reveal reveal-delay-${Math.min(index % 4 + 1, 4)}`}
+        style="border-bottom: 1px solid var(--border);"
+      >
+        <!-- Left: index + title + description -->
+        <div class="flex items-center gap-4 md:gap-8 flex-1 min-w-0">
+          <span
+            class="label-text flex-shrink-0 w-6 text-right"
+            style="color: var(--fg-subtle);"
+          >
+            {String(index + 1).padStart(2, '0')}
+          </span>
+
+          <div class="flex-1 min-w-0">
+            <h3
+              class="font-semibold truncate"
+              style="font-size: clamp(0.95rem, 2vw, 1.15rem); color: var(--fg); letter-spacing: -0.01em;"
+            >
+              {project.title}
+            </h3>
+            <p
+              class="text-sm mt-0.5 truncate hidden md:block"
+              style="color: var(--fg-subtle);"
+            >
+              {project.description}
+            </p>
+          </div>
+        </div>
+
+        <!-- Right: tags + arrow -->
+        <div class="flex items-center gap-4 md:gap-8 flex-shrink-0 ml-4">
+          <div class="hidden lg:flex gap-2">
+            {project.tags.slice(0, 2).map((tag) => (
+              <span
+                class="label-text px-2 py-1"
+                style="color: var(--fg-subtle); border: 1px solid var(--border);"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          <div class="flex items-center gap-2 label-text" style="color: var(--fg-subtle);">
+            <span class="hidden md:inline">View</span>
+            <span
+              class="transition-transform duration-200 group-hover:translate-x-1 inline-block text-base"
+              style="color: var(--fg);"
+            >→</span>
+          </div>
+        </div>
+      </a>
+    ))}
+  </div>
+
+  <!-- Bottom spacer -->
+  <div class="pb-16 md:pb-20"></div>
 </section>

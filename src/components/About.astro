@@ -28,33 +28,30 @@ const details = [
 
 <section
   id="about"
-  class="py-24 md:py-32"
   style="border-top: 1px solid var(--border);"
 >
-  <div class="max-w-7xl mx-auto px-6 md:px-10">
+  <!-- Bio area — padded container -->
+  <div class="px-6 md:px-10 pt-16 md:pt-20">
 
-    <!-- Section label -->
-    <div class="mb-12 reveal">
+    <div class="mb-10 reveal">
       <p class="label-text" style="color: var(--fg-muted);">About</p>
     </div>
 
-    <!-- Two-column grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
-
-      <!-- Left: Bio -->
+    <!-- Two-column on desktop, single on mobile -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-24 pb-12 md:pb-16">
       <div>
         <h2
-          class="font-bold leading-tight mb-10 reveal"
+          class="font-bold leading-tight mb-8 reveal"
           style="font-size: clamp(2rem, 4vw, 3.5rem); letter-spacing: -0.02em; color: var(--fg);"
         >
           Coding nice things<br />
           <span style="color: var(--fg-muted);">makes me happy.</span>
         </h2>
 
-        <div class="space-y-4 mb-12">
+        <div class="space-y-4">
           {bio.map((line, i) => (
             <p
-              class={`text-lg leading-relaxed reveal reveal-delay-${i + 1}`}
+              class={`text-base md:text-lg leading-relaxed reveal reveal-delay-${i + 1}`}
               style="color: var(--fg-muted);"
             >
               {line}
@@ -62,44 +59,38 @@ const details = [
           ))}
         </div>
       </div>
-
-      <!-- Right: Details -->
-      <div class="flex flex-col justify-end">
-        <div
-          class="reveal"
-          style="border-top: 1px solid var(--border);"
-        >
-          {details.map((detail, i) => (
-            <div
-              class={`flex items-center justify-between py-5 reveal reveal-delay-${i + 1}`}
-              style="border-bottom: 1px solid var(--border);"
-            >
-              <div class="flex items-center gap-3">
-                <span style="color: var(--fg-subtle);" set:html={detail.icon} />
-                <span class="label-text" style="color: var(--fg-subtle);">{detail.label}</span>
-              </div>
-              {detail.href ? (
-                <a
-                  href={detail.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="flex items-center gap-2 group"
-                  style="color: var(--fg-muted);"
-                >
-                  <span class="text-sm font-medium">{detail.text}</span>
-                  <span
-                    class="transition-transform duration-200 group-hover:translate-x-1"
-                    style="color: var(--fg-subtle);"
-                  >→</span>
-                </a>
-              ) : (
-                <span class="text-sm font-medium" style="color: var(--fg-muted);">{detail.text}</span>
-              )}
-            </div>
-          ))}
-        </div>
-      </div>
-
     </div>
+  </div>
+
+  <!-- Detail rows — full-width, borders touch screen edges -->
+  <div style="border-top: 1px solid var(--border);">
+    {details.map((detail, i) => (
+      <div
+        class={`flex items-center justify-between px-6 md:px-10 py-5 reveal reveal-delay-${i + 1}`}
+        style="border-bottom: 1px solid var(--border);"
+      >
+        <div class="flex items-center gap-3">
+          <span style="color: var(--fg-subtle);" set:html={detail.icon} />
+          <span class="label-text" style="color: var(--fg-subtle);">{detail.label}</span>
+        </div>
+        {detail.href ? (
+          <a
+            href={detail.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-2 group"
+            style="color: var(--fg-muted);"
+          >
+            <span class="text-sm font-medium">{detail.text}</span>
+            <span
+              class="transition-transform duration-200 group-hover:translate-x-1"
+              style="color: var(--fg-subtle);"
+            >→</span>
+          </a>
+        ) : (
+          <span class="text-sm font-medium" style="color: var(--fg-muted);">{detail.text}</span>
+        )}
+      </div>
+    ))}
   </div>
 </section>
