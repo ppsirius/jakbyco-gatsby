@@ -8,55 +8,89 @@ const bio = [
 
 const details = [
   {
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>`,
+    label: 'Location',
     text: 'Warsaw',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>`,
   },
   {
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>`,
+    label: 'Work',
     text: 'ERGO Technology & Services',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>`,
   },
   {
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`,
+    label: 'Hobby',
     text: 'Akademia Gorila',
     href: 'https://web.facebook.com/GorilaAcademia/',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`,
   },
 ];
 ---
 
-<section id="about" class="py-24 px-6 max-w-4xl mx-auto">
-  <div class="mb-12">
-    <h2 class="text-3xl md:text-5xl font-bold text-white leading-tight mb-2">
-      Coding nice things
-    </h2>
-    <h2 class="text-3xl md:text-5xl font-bold text-white/60 leading-tight mb-12">
-      makes me happy.
-    </h2>
-    <div class="w-16 h-px bg-white/40 mb-10"></div>
+<section
+  id="about"
+  style="border-top: 1px solid var(--border);"
+>
+  <!-- Bio area — padded container -->
+  <div class="px-6 md:px-10 pt-16 md:pt-20">
+
+    <div class="mb-10 reveal">
+      <p class="label-text" style="color: var(--fg-muted);">About</p>
+    </div>
+
+    <!-- Two-column on desktop, single on mobile -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-24 pb-12 md:pb-16">
+      <div>
+        <h2
+          class="font-bold leading-tight mb-8 reveal"
+          style="font-size: clamp(2rem, 4vw, 3.5rem); letter-spacing: -0.02em; color: var(--fg);"
+        >
+          Coding nice things<br />
+          <span style="color: var(--fg-muted);">makes me happy.</span>
+        </h2>
+
+        <div class="space-y-4">
+          {bio.map((line, i) => (
+            <p
+              class={`text-base md:text-lg leading-relaxed reveal reveal-delay-${i + 1}`}
+              style="color: var(--fg-muted);"
+            >
+              {line}
+            </p>
+          ))}
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="space-y-3 mb-10">
-    {bio.map((line) => (
-      <p class="text-white/90 text-lg md:text-xl">{line}</p>
-    ))}
-  </div>
-
-  <ul class="space-y-3">
-    {details.map((detail) => (
-      <li class="flex items-center gap-3 text-white/70">
-        <span class="text-white/50 flex-shrink-0" set:html={detail.icon} />
+  <!-- Detail rows — full-width, borders touch screen edges -->
+  <div style="border-top: 1px solid var(--border);">
+    {details.map((detail, i) => (
+      <div
+        class={`flex items-center justify-between px-6 md:px-10 py-5 reveal reveal-delay-${i + 1}`}
+        style="border-bottom: 1px solid var(--border);"
+      >
+        <div class="flex items-center gap-3">
+          <span style="color: var(--fg-subtle);" set:html={detail.icon} />
+          <span class="label-text" style="color: var(--fg-subtle);">{detail.label}</span>
+        </div>
         {detail.href ? (
           <a
             href={detail.href}
             target="_blank"
             rel="noopener noreferrer"
-            class="hover:text-white transition-colors"
+            class="flex items-center gap-2 group"
+            style="color: var(--fg-muted);"
           >
-            {detail.text}
+            <span class="text-sm font-medium">{detail.text}</span>
+            <span
+              class="transition-transform duration-200 group-hover:translate-x-1"
+              style="color: var(--fg-subtle);"
+            >→</span>
           </a>
         ) : (
-          <span>{detail.text}</span>
+          <span class="text-sm font-medium" style="color: var(--fg-muted);">{detail.text}</span>
         )}
-      </li>
+      </div>
     ))}
-  </ul>
+  </div>
 </section>

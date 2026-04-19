@@ -9,7 +9,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
 function formatDate(date: Date) {
   return date.toLocaleDateString('en-US', {
     year: 'numeric',
-    month: 'long',
+    month: 'short',
     day: 'numeric',
   });
 }
@@ -20,49 +20,101 @@ function formatDate(date: Date) {
   description="Thoughts on frontend development, design, and the web."
 >
   <Nav />
-  <main class="min-h-screen pt-24 pb-16 px-6 max-w-3xl mx-auto">
-    <header class="mb-16 mt-8">
-      <a href="/" class="text-white/40 hover:text-white/70 transition-colors text-sm mb-6 inline-block">
-        ← Back to portfolio
-      </a>
-      <h1 class="text-4xl md:text-5xl font-bold text-white">Blog</h1>
-      <p class="text-white/60 mt-3 text-lg">
-        Thoughts on frontend development, design, and the web.
-      </p>
-    </header>
+  <main class="min-h-screen pt-14">
 
+    <!-- Page header -->
+    <div
+      class="px-6 md:px-10 py-16 md:py-24"
+      style="border-bottom: 1px solid var(--border);"
+    >
+      <a
+        href="/"
+        class="label-text inline-flex items-center gap-2 mb-10 hover:opacity-60 transition-opacity"
+        style="color: var(--fg-muted);"
+      >
+        <span>←</span>
+        <span>Back to portfolio</span>
+      </a>
+      <div class="reveal">
+        <p class="label-text mb-3" style="color: var(--fg-muted);">Writing</p>
+        <h1
+          class="font-bold leading-none"
+          style="font-size: clamp(3rem, 8vw, 7rem); letter-spacing: -0.03em; color: var(--fg);"
+        >
+          Blog
+        </h1>
+      </div>
+    </div>
+
+    <!-- Posts list -->
     {posts.length === 0 ? (
-      <p class="text-white/50">No posts yet. Check back soon.</p>
+      <div class="px-6 md:px-10 py-20">
+        <p class="label-text" style="color: var(--fg-subtle);">No posts yet. Check back soon.</p>
+      </div>
     ) : (
-      <ul class="space-y-8">
-        {posts.map((post) => (
-          <li>
-            <a
-              href={`/blog/${post.id}`}
-              class="group block p-6 border border-white/10 rounded-lg hover:border-white/30 hover:bg-white/5 transition-all duration-300"
-            >
+      <div>
+        {posts.map((post, index) => (
+          <a
+            href={`/blog/${post.id}`}
+            class={`group flex items-start md:items-center justify-between gap-6 px-6 md:px-10 py-7 reveal reveal-delay-${Math.min(index + 1, 4)}`}
+            style="border-bottom: 1px solid var(--border); display: flex;"
+          >
+            <!-- Left: date + title + desc -->
+            <div class="flex-1 min-w-0">
               <time
                 datetime={post.data.pubDate.toISOString()}
-                class="text-white/40 text-sm"
+                class="label-text block mb-2"
+                style="color: var(--fg-subtle);"
               >
                 {formatDate(post.data.pubDate)}
               </time>
-              <h2 class="text-white text-xl font-semibold mt-2 mb-2 group-hover:text-white/90">
+              <h2
+                class="font-semibold mb-1 transition-opacity duration-200 group-hover:opacity-70"
+                style="font-size: clamp(1rem, 2vw, 1.25rem); color: var(--fg); letter-spacing: -0.01em;"
+              >
                 {post.data.title}
-                <span class="inline-block ml-2 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
               </h2>
-              <p class="text-white/60 text-sm leading-relaxed">{post.data.description}</p>
-              <div class="flex flex-wrap gap-2 mt-4">
+              <p class="text-sm leading-relaxed" style="color: var(--fg-subtle);">
+                {post.data.description}
+              </p>
+              <div class="flex flex-wrap gap-2 mt-3">
                 {post.data.tags.map((tag: string) => (
-                  <span class="text-xs text-white/40 bg-white/5 px-2 py-0.5 rounded">
+                  <span
+                    class="label-text px-2 py-1"
+                    style="color: var(--fg-subtle); border: 1px solid var(--border);"
+                  >
                     #{tag}
                   </span>
                 ))}
               </div>
-            </a>
-          </li>
+            </div>
+
+            <!-- Arrow -->
+            <span
+              class="flex-shrink-0 text-lg transition-transform duration-200 group-hover:translate-x-1 mt-1"
+              style="color: var(--fg);"
+            >
+              →
+            </span>
+          </a>
         ))}
-      </ul>
+      </div>
     )}
+
+    <!-- Footer bar -->
+    <div
+      class="px-6 md:px-10 py-6 flex items-center justify-between"
+      style="border-top: 1px solid var(--border); margin-top: auto;"
+    >
+      <p class="label-text" style="color: var(--fg-subtle);">&copy; {new Date().getFullYear()} Piotr Pupczyk</p>
+      <a
+        href="/"
+        class="label-text hover:opacity-60 transition-opacity"
+        style="color: var(--fg-muted);"
+      >
+        jakbyco.com
+      </a>
+    </div>
+
   </main>
 </Layout>
